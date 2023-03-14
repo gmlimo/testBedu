@@ -18,7 +18,7 @@ fun main(args: Array<String>){
     print("¿Deseas ver nuestros productos? ")
     val respuesta = readLine()
     if(respuesta == "si"){
-        println("El cafe cuesta: $café y las donas: $donas")
+        println("El café cuesta: $café y las donas: $donas")
     }
     else {
         println("gracias")
