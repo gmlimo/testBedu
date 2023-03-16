@@ -2,7 +2,7 @@ package clases
 
 const val PHONE_LENGTH = 10
 var match = false
-var datos = Data()
+val datos = Data()
 
 class User (
     private val name: String,

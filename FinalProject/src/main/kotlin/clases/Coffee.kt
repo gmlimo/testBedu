@@ -1,11 +1,11 @@
 package clases
 
 //El otro producto es el café y se define en esta clase
-class Coffee(var tamaño: String, override val flavor: String): Product("Coffee") {
+class Coffee(var tamaño: Size, override val flavor: String): Product("Coffee") {
 
     protected var sabor = ""
     open public override var quantity = 0
-    override var price = 22.5f
+    override var price = data.productList.getValue("café")
     override var size = tamaño
 
     init {

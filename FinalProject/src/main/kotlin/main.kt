@@ -1,36 +1,32 @@
-import clases.Coffee
-import clases.Data
-import clases.Donut
-import clases.User
+import clases.*
 
-var datos = Data()
-val iva = 1.08f
+val datos = Data()
 var costoDonas = 0.0f
 var costoCafe = 0.0f
 
 fun main(){
 
-    //val donas = Donut("Small", "Chocolate")
-    //costoDonas = donas.subTotal(2)
+    val donas = Donut(Size.Small, "Chocolate")
+    costoDonas = donas.subTotal(2)
 
-   /* val cafe = Coffee("Small", "Capuchino")
+    val cafe = Coffee(Size.Jumbo, "Capuchino")
     costoCafe = cafe.subTotal(2)
 
-    var total = (costoDonas + costoCafe) * iva
+    var total = (costoDonas + costoCafe) * datos.iva
     println("El total a pagar es: $total")
-*/
 
-
+/*
+    //Registro de usuarios nuevo
     val user = User("William", 2, "1234", "wlimon@cituspower.com")
 
-    //Receive user and password
+    //Recibe usurario y constraseña
     print("Escribe tu usuario: ")
-    var usuario = readLine()!!
+    val usuario = readLine()!!
     print("Escribe tu contraseña: ")
-    var contraseña = readLine()!!
+    val contraseña = readLine()!!
 
-    /*The sucessfull login prompt you with the catalog and gives you options to buy.
-    **Fail to login give you incorrect message
+    /*Un login exitoso te lleva al selección de productos
+    **Si hay una falla aparece el mensaje usuario y/o contraseña incorrectos
      */
     if (user.login(usuario, contraseña)){
         println("Login exitoso")
@@ -50,7 +46,7 @@ fun main(){
             return
         }
         println("El precio de $selcadena es: ${datos.productList.getValue(selcadena)}")
-    } else println("Usuario y/o contraseña incorrectos")
+    } else println("Usuario y/o contraseña incorrectos") */
 
 
 /*  //Login function test
