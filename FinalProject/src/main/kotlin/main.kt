@@ -3,8 +3,12 @@ import clases.*
 val datos = Data()
 var costoDonas = 0.0f
 var costoCafe = 0.0f
+var costoWafle = 0.0f
 
 fun main(){
+
+    val waffle = Waffle(Size.Small, "Nutela")
+    costoWafle = waffle.subTotal(3)
 
     val donas = Donut(Size.Small, "Chocolate")
     costoDonas = donas.subTotal(2)
