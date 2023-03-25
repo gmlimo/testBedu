@@ -6,10 +6,10 @@ var costoCafe = 0.0f
 
 fun main(){
 
-    val donas = Donut(Size.Small, "Chocolate")
+    val donas = Donut(Size.Small, Flavor.CANELA )
     costoDonas = donas.subTotal(2)
 
-    val cafe = Coffee(Size.Jumbo, "Capuchino")
+    val cafe = Coffee(Size.Jumbo, CAFES.AMERICANO ,JARABES.VAINILLA)
     costoCafe = cafe.subTotal(2)
 
     var total = (costoDonas + costoCafe) * datos.iva

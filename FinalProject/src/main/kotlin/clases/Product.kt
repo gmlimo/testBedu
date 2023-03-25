@@ -6,7 +6,6 @@ enum class Size {Small, Medium, Jumbo}
 abstract class Product(open val name: String) {
 
     //Todos los productos tienen un sabor, tamaño, precio y se especifíca una cantidad
-    abstract val flavor: String
     open protected var size: Size = Size.Small
     open protected var price: Float = 0.0f
     open protected var quantity: Int = 0
