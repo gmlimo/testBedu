@@ -5,8 +5,10 @@ data class Data(
     val productList: Map<String, Float> = mapOf(
         "café" to 42.50f,
         "donas" to 12.40f,
-        "Waffle" to 52.50f
-    ),
+        "waffle" to 52.50f,
+        "pastel" to 120.50f,
+        "gelatina" to 14.50f
+     ),
 
     //Map of pre-registered user name and password
     val loginData: Map<String, String> = mapOf(

@@ -4,9 +4,15 @@ val datos = Data()
 var costoDonas = 0.0f
 var costoCafe = 0.0f
 var costoWafle = 0.0f
+var costoPastel = 0.0f
+var costoGelatina = 0.0f
 
 fun main(){
+    val gelatina = Gelatina(Size.Small,"fresa")
+    costoGelatina = gelatina.subTotal(1)
 
+    val pastel = Pastel(Size.Small,"Tres leches")
+    costoPastel = pastel.subTotal(1)
     val waffle = Waffle(Size.Small, "Nutela")
     costoWafle = waffle.subTotal(3)
 

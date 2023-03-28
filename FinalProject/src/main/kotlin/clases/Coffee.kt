@@ -5,7 +5,7 @@ class Coffee(var tamaño: Size, override val flavor: String): Product("Coffee") 
 
     protected var sabor = ""
     open public override var quantity = 0
-    override var price = data.productList.getValue("café")
+    override var price = data.productList.getValue("")
     override var size = tamaño
 
     init {
