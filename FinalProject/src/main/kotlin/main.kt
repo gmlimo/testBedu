@@ -5,17 +5,17 @@ var costoDonas = 0.0f
 var costoCafe = 0.0f
 
 fun main(){
-
+/*
     val donas = Donut(Size.Small, "Chocolate")
-    costoDonas = donas.subTotal(2)
+    costoDonas = donas.subTotal(3)
 
     val cafe = Coffee(Size.Jumbo, "Capuchino")
     costoCafe = cafe.subTotal(2)
 
     var total = (costoDonas + costoCafe) * datos.iva
-    println("El total a pagar es: $total")
+    println("El total a pagar es: $total")*/
 
-/*
+
     //Registro de usuarios nuevo
     val user = User("William", 2, "1234", "wlimon@cituspower.com")
 
@@ -46,7 +46,7 @@ fun main(){
             return
         }
         println("El precio de $selcadena es: ${datos.productList.getValue(selcadena)}")
-    } else println("Usuario y/o contraseña incorrectos") */
+    } else println("Usuario y/o contraseña incorrectos")
 
 
 /*  //Login function test
