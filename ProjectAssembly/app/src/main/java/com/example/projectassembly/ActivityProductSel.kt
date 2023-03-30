@@ -48,7 +48,6 @@ class ActivityProductSel : AppCompatActivity() {
 
             quantity = 0
             amount_TV.text="0"
-            val size = Size.getText().toString()
 
             if (donutCheck.isChecked) {
                 //Toast.makeText(this, "Selección Donas", Toast.LENGTH_LONG).show()
@@ -72,6 +71,10 @@ class ActivityProductSel : AppCompatActivity() {
 
 
                 addCart.setOnClickListener {
+                    //Get the size of the product
+                    val size = Size.getText().toString()
+
+                    //Get the subtotal to pay
                     priceD = donas.subTotal(quantity, size)
                     Toast.makeText(this, "El total es: $priceD", Toast.LENGTH_LONG).show()
                 }
@@ -83,7 +86,6 @@ class ActivityProductSel : AppCompatActivity() {
 
             quantity = 0
             amount_TV.text="0"
-            val size = Size.getText().toString()
 
             if (coffeeCheck.isChecked) {
                 //Toast.makeText(this, "Selección Café", Toast.LENGTH_LONG).show()
@@ -107,6 +109,10 @@ class ActivityProductSel : AppCompatActivity() {
 
 
                 addCart.setOnClickListener {
+                    //Get the size of the product
+                    val size = Size.getText().toString()
+
+                    //Get the subtotal to pay
                     priceC = cafe.subTotal(quantity, size)
                     Toast.makeText(this, "El total es: $priceC", Toast.LENGTH_LONG).show()
                 }

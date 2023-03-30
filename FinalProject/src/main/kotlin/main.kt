@@ -3,19 +3,29 @@ import clases.*
 val datos = Data()
 var costoDonas = 0.0f
 var costoCafe = 0.0f
+var costoWafle = 0.0f
+var costoPastel = 0.0f
+var costoGelatina = 0.0f
 
 fun main(){
-/*
+    val gelatina = Gelatina(Size.Small,"fresa")
+    costoGelatina = gelatina.subTotal(1)
+
+    val pastel = Pastel(Size.Small,"Tres leches")
+    costoPastel = pastel.subTotal(1)
+    val waffle = Waffle(Size.Small, "Nutela")
+    costoWafle = waffle.subTotal(3)
+
     val donas = Donut(Size.Small, "Chocolate")
-    costoDonas = donas.subTotal(3)
+    costoDonas = donas.subTotal(2)
 
     val cafe = Coffee(Size.Jumbo, "Capuchino")
     costoCafe = cafe.subTotal(2)
 
     var total = (costoDonas + costoCafe) * datos.iva
-    println("El total a pagar es: $total")*/
+    println("El total a pagar es: $total")
 
-
+/*
     //Registro de usuarios nuevo
     val user = User("William", 2, "1234", "wlimon@cituspower.com")
 
@@ -46,7 +56,7 @@ fun main(){
             return
         }
         println("El precio de $selcadena es: ${datos.productList.getValue(selcadena)}")
-    } else println("Usuario y/o contraseña incorrectos")
+    } else println("Usuario y/o contraseña incorrectos") */
 
 
 /*  //Login function test

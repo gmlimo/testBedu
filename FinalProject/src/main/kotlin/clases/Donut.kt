@@ -2,7 +2,7 @@ package clases
 
 //Uno de los producto a manejar son las donas, esta clase define las donas
 
-val data = Data()
+var data = Data()
 class Donut(var tamaño: Size, override val flavor: String): Product("Donut") {
 
     protected var sabor = ""

@@ -17,8 +17,8 @@ abstract class Product(open val name: String) {
 
         when (tamaño) {
             "Small" -> cantidad * price
-
-            else -> 1.2f * cantidad * price
+            "Medium" -> 1.2f * cantidad * price
+            else -> 1.5f * cantidad * price
         }
        /* when (size) {
             Size.Small -> cantidad * price
