@@ -15,6 +15,8 @@ import com.example.projectassembly.clases.Size
 //enum class Size {Small, Medium, Jumbo}
 const val totalD = "totalD"
 const val totalC = "totalC"
+const val totalW = "totalW"
+const val totalP = "totalP"
 val datos = Data()
 
 class ActivityProductSel : AppCompatActivity() {
@@ -28,6 +30,8 @@ class ActivityProductSel : AppCompatActivity() {
     var quantity = 0
     var priceD = 0.0f
     var priceC = 0.0f
+    var priceW = 0.0f
+    var priceP = 0.0f
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -119,8 +123,8 @@ class ActivityProductSel : AppCompatActivity() {
                     val size = Size.getText().toString()
 
                     //Get the subtotal to pay
-                    priceD = waffle.subTotal(quantity, size)
-                    Toast.makeText(this, "El total es: $priceD", Toast.LENGTH_LONG).show()
+                    priceW = waffle.subTotal(quantity, size)
+                    Toast.makeText(this, "El total es: $priceW", Toast.LENGTH_LONG).show()
                 }
             } //else Toast.makeText(this, "No hay productos seleccionados", Toast.LENGTH_SHORT).show()
         }
@@ -157,8 +161,8 @@ class ActivityProductSel : AppCompatActivity() {
                     val size = Size.getText().toString()
 
                     //Get the subtotal to pay
-                    priceD = pastel.subTotal(quantity, size)
-                    Toast.makeText(this, "El total es: $priceD", Toast.LENGTH_LONG).show()
+                    priceP = pastel.subTotal(quantity, size)
+                    Toast.makeText(this, "El total es: $priceP", Toast.LENGTH_LONG).show()
                 }
             } //else Toast.makeText(this, "No hay productos seleccionados", Toast.LENGTH_SHORT).show()
         }
@@ -207,6 +211,8 @@ class ActivityProductSel : AppCompatActivity() {
             val intent = Intent(this, CartActivity::class.java).also {
                 it.putExtra(totalD, "$priceD")
                 it.putExtra(totalC, "$priceC")
+                it.putExtra(totalW, "$priceW")
+                it.putExtra(totalP, "$priceP")
             }
             startActivity(intent)
         }
