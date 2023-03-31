@@ -1,5 +1,7 @@
 package com.example.projectassembly
 
+import Pastel
+import Waffle
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +9,7 @@ import android.widget.*
 import com.example.projectassembly.clases.Coffee
 import com.example.projectassembly.clases.Data
 import com.example.projectassembly.clases.Donut
+import com.example.projectassembly.clases.*
 import com.example.projectassembly.clases.Size
 
 //enum class Size {Small, Medium, Jumbo}
@@ -20,6 +23,8 @@ class ActivityProductSel : AppCompatActivity() {
     val costoCafe = datos.productList.getValue("café")
     val donas = Donut("Chocolate")
     val cafe = Coffee("Capuchino")
+    val waffle = Waffle("chocolate")
+    val pastel = Pastel("tres leches")
     var quantity = 0
     var priceD = 0.0f
     var priceC = 0.0f
@@ -32,6 +37,8 @@ class ActivityProductSel : AppCompatActivity() {
         //Views declarations
         val donutCheck = findViewById<CheckBox>(R.id.donutCheck)
         val coffeeCheck = findViewById<CheckBox>(R.id.coffeeCheck)
+        val waffleCheck = findViewById<CheckBox>(R.id.waffleCheck)
+        val pastelCheck = findViewById<CheckBox>(R.id.pastelCheck)
         val donutImage = findViewById<ImageView>(R.id.donutView)
         val plusButton = findViewById<Button>(R.id.plusButton)
         val minusButton = findViewById<Button>(R.id.minusButton)
@@ -76,6 +83,81 @@ class ActivityProductSel : AppCompatActivity() {
 
                     //Get the subtotal to pay
                     priceD = donas.subTotal(quantity, size)
+                    Toast.makeText(this, "El total es: $priceD", Toast.LENGTH_LONG).show()
+                }
+            } //else Toast.makeText(this, "No hay productos seleccionados", Toast.LENGTH_SHORT).show()
+        }
+        //waffle
+        waffleCheck.setOnClickListener {
+
+            quantity = 0
+            amount_TV.text="0"
+
+            if (waffleCheck.isChecked) {
+                //Toast.makeText(this, "Selección waffle", Toast.LENGTH_LONG).show()
+
+                //Change image
+                donutImage.setImageResource(R.drawable.waffle)
+
+                //On ClickListener for the Plus Button
+                plusButton.setOnClickListener {
+                    it
+                    quantity++
+                    amount_TV.text = quantity.toString()
+                }
+
+                //On ClickListener for the Minus Button
+                minusButton.setOnClickListener {
+                    it
+                    quantity--
+                    amount_TV.text = quantity.toString()
+                }
+
+
+                addCart.setOnClickListener {
+                    //Get the size of the product
+                    val size = Size.getText().toString()
+
+                    //Get the subtotal to pay
+                    priceD = waffle.subTotal(quantity, size)
+                    Toast.makeText(this, "El total es: $priceD", Toast.LENGTH_LONG).show()
+                }
+            } //else Toast.makeText(this, "No hay productos seleccionados", Toast.LENGTH_SHORT).show()
+        }
+
+        //Pastel
+        pastelCheck.setOnClickListener {
+
+            quantity = 0
+            amount_TV.text="0"
+
+            if (pastelCheck.isChecked) {
+                //Toast.makeText(this, "Selección waffle", Toast.LENGTH_LONG).show()
+
+                //Change image
+                donutImage.setImageResource(R.drawable.pastel)
+
+                //On ClickListener for the Plus Button
+                plusButton.setOnClickListener {
+                    it
+                    quantity++
+                    amount_TV.text = quantity.toString()
+                }
+
+                //On ClickListener for the Minus Button
+                minusButton.setOnClickListener {
+                    it
+                    quantity--
+                    amount_TV.text = quantity.toString()
+                }
+
+
+                addCart.setOnClickListener {
+                    //Get the size of the product
+                    val size = Size.getText().toString()
+
+                    //Get the subtotal to pay
+                    priceD = pastel.subTotal(quantity, size)
                     Toast.makeText(this, "El total es: $priceD", Toast.LENGTH_LONG).show()
                 }
             } //else Toast.makeText(this, "No hay productos seleccionados", Toast.LENGTH_SHORT).show()
