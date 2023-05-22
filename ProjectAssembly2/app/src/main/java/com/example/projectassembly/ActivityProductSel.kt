@@ -24,7 +24,6 @@ class ActivityProductSel : AppCompatActivity() {
     //Views declaration
     private lateinit var binding: ActivityProductSelBinding
 
-
     //Options for the Spinners
     var size = arrayOf(" ", "Small", "Medium", "Jumbo")
 
