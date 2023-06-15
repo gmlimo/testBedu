@@ -1,5 +1,6 @@
 package org.bedu.retrofit_test
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -23,30 +24,39 @@ class MainActivity : AppCompatActivity() {
 
         with (binding) {
             searchBtn.setOnClickListener {
-                val productName = productText.getText().toString()
-                val call = api.endpoint.getProduct(productName)
-
-                call.enqueue(object : Callback<ProductData> {
-                    override fun onFailure(call: Call<ProductData>, t: Throwable) {
-                        Toast.makeText(this@MainActivity, "Hubo un error", Toast.LENGTH_SHORT).show()
-                    }
-
-                    override fun onResponse(call: Call<ProductData>, response: Response<ProductData>) {
-                        if(response.code()==200){
-                            val body = response.body()
-                            Log.d("Respuesta","${response.body().toString()}")
-
-                            binding.price.text = body?.price.toString()
-
-
-                        } else{
-                            Log.e("Not200","Error not 200: $response")
-                            Toast.makeText(this@MainActivity, "No se encontró el producto", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-
-                })
+                val productName = productText.text.toString()
+                fetchProductData(productName)
             }
         }
+    }
+
+    private fun fetchProductData(productName: String){
+        api.endpoint.getProduct(productName).enqueue(object : Callback<ProductData> {
+            override fun onResponse(call: Call<ProductData>, response: Response<ProductData>) {
+                if (response.isSuccessful) {
+                    response.body()?.let { productData ->
+                        binding.price.text = productData.price?.toString()
+                    } ?: run {
+                        productNotFoundResponse(this@MainActivity, productName)
+                    }
+                } else {
+                    showNetworkError(this@MainActivity, response.toString())
+                }
+            }
+
+            override fun onFailure(call: Call<ProductData>, t: Throwable) {
+                Toast.makeText(this@MainActivity, "Error processing your request. Please try again later: ${t.message.toString()}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun productNotFoundResponse(context: Context, productName: String) {
+        Log.e("NotFound", "Product not found error: $productName")
+        Toast.makeText(context, "Product not found: $productName\nPlease try searching for another product.", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showNetworkError(context: Context, errorMessage: String) {
+        Log.e("Not200", "Error not 200: $errorMessage")
+        Toast.makeText(context, "Error processing your request. Please try again later: $errorMessage", Toast.LENGTH_SHORT).show()
     }
 }
