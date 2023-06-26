@@ -4,11 +4,15 @@ import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.TransitionInflater
 import android.widget.Toast
 import org.bedu.cafebedu.databinding.ActivityLoginBinding
+import org.bedu.cafebedu.notifications.NotificationApp
+import org.bedu.cafebedu.utils.executeOrRequestPermission
+import org.bedu.cafebedu.utils.simpleNotification
 
 
 class LoginActivity : AppCompatActivity() {
@@ -36,6 +40,9 @@ class LoginActivity : AppCompatActivity() {
             loginButton.setOnClickListener {
                 if (getLoginData()) {
                     configTransition()
+                    executeOrRequestPermission(this@LoginActivity) {
+                        simpleNotification(this@LoginActivity)
+                    }
                     changeActivity(productSelAct)
                    // Toast.makeText(this@LoginActivity, getString(R.string.success), Toast.LENGTH_SHORT).show()
                 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "341231975760",
+    "project_id": "cafe-bedu-21e03",
+    "storage_bucket": "cafe-bedu-21e03.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341231975760:android:20f0c9bbbda7d4182c8055",
+        "android_client_info": {
+          "package_name": "org.bedu.cafebedu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341231975760-p3vorhr7l4oj739o6obtk2sbbq9q5u57.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAG7YX7CElP0r0YuC9CnUvYT9qG3qeb4-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "341231975760-p3vorhr7l4oj739o6obtk2sbbq9q5u57.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

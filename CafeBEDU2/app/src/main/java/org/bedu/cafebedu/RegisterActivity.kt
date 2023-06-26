@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import org.bedu.cafebedu.databinding.ActivityRegisterBinding
+import org.bedu.cafebedu.utils.executeOrRequestPermission
+import org.bedu.cafebedu.utils.touchNotification
 
 val PREFS_NAME = "org.bedu.cafebedu"
 val USER_KEY = "USER_KEY"
@@ -38,6 +40,10 @@ class RegisterActivity : AppCompatActivity() {
                     .putString(USER_KEY, user)
                     .putString(PASS_KEY, pass)
                     .apply()
+
+                executeOrRequestPermission(this@RegisterActivity) {
+                    touchNotification(this@RegisterActivity)
+                }
 
                 changeActivity(loginActivity)
 
