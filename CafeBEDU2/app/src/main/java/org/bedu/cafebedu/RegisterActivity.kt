@@ -11,6 +11,7 @@ import org.bedu.cafebedu.databinding.ActivityRegisterBinding
 import org.bedu.cafebedu.utils.executeOrRequestPermission
 import org.bedu.cafebedu.utils.touchNotification
 
+//Constantes para grabar en memoria usando Shared Preferences
 val PREFS_NAME = "org.bedu.cafebedu"
 val USER_KEY = "USER_KEY"
 val PASS_KEY = "PASS_KEY"
@@ -18,6 +19,7 @@ lateinit var preferences: SharedPreferences
 
 class RegisterActivity : AppCompatActivity() {
 
+    //Declaración del binding y la actividad de acceso
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var loginActivity: Activity
 
@@ -27,10 +29,12 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //Aquí se inicializan Shared Preferences y la actividad de acceso
         preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
         loginActivity = LoginActivity()
 
         with (binding) {
+            //Si se presiona el botón de registro se guardan los datos
             registerButton.setOnClickListener {
                 val user = emailText.getText().toString()
                 val pass = regPass.getText().toString()
@@ -41,6 +45,7 @@ class RegisterActivity : AppCompatActivity() {
                     .putString(PASS_KEY, pass)
                     .apply()
 
+                //Notificación local de las promociones
                 executeOrRequestPermission(this@RegisterActivity) {
                     touchNotification(this@RegisterActivity)
                 }
@@ -55,6 +60,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    //Método para validar el registro, campos de email (usuario) y contraseña no deben quedar vacíos
     private fun register(user: String, password: String): Boolean {
         fun validate(input: String) = input.isNotEmpty()
 
@@ -64,6 +70,7 @@ class RegisterActivity : AppCompatActivity() {
         return userValited && passwordValidated
     }
 
+    //Método para cambio de actividad
     private fun changeActivity(activity: Activity) {
         val intent = Intent(this, activity::class.java)
         startActivity(intent)

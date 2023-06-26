@@ -17,6 +17,7 @@ import org.bedu.cafebedu.utils.simpleNotification
 
 class LoginActivity : AppCompatActivity() {
 
+    //Declaración de binding y activities
     private lateinit var binding: ActivityLoginBinding
     private lateinit var registerActivity: Activity
     private lateinit var productSelAct: Activity
@@ -44,7 +45,6 @@ class LoginActivity : AppCompatActivity() {
                         simpleNotification(this@LoginActivity)
                     }
                     changeActivity(productSelAct)
-                   // Toast.makeText(this@LoginActivity, getString(R.string.success), Toast.LENGTH_SHORT).show()
                 }
                 else {
                     Toast.makeText(this@LoginActivity, getString(R.string.fail), Toast.LENGTH_SHORT).show()
@@ -54,11 +54,15 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    //Métodos a implementar en esta actividad
+
+    //Método para cambiar de actividad
     private fun changeActivity(activity: Activity) {
         val intent = Intent(this, activity::class.java)
         startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
     }
 
+    //Método para revisar el acceso a la aplicación
     private fun getLoginData(): Boolean {
         val user = binding.userNameText.getText().toString()
         val password = binding.passText2.getText().toString()
@@ -68,15 +72,18 @@ class LoginActivity : AppCompatActivity() {
         val userValidated = validate(user)
         val passwordValidated = validate(password)
 
+        //Se obtienen Shared Preferences de la actividad de registro
         preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
         val r_user = preferences.getString(USER_KEY, "")
         val r_pass = preferences.getString(PASS_KEY, "")
         var match = false
 
+        //Aquí se verifica si el usuario y contraseña del registro coincide con los datos recien ingresados
         if (user == r_user && password == r_pass) match = true else match = false
         return userValidated && passwordValidated && match
     }
 
+    //Se configura una pequeña transición entre el acceso y el registro (login and register activities)
     private fun configTransition() {
         val transitionXml = TransitionInflater
             .from(this).inflateTransition(R.transition.activity_transition).apply {

@@ -19,9 +19,11 @@ private lateinit var total: TextView
 
 class CartFragment : Fragment(R.layout.fragment_cart), RecyclerAdapter.OnItemClickListener {
 
+    //Declaramos binding y recycler usado para mostrar elementos del carrito
     private var fragmentBlankBinding: FragmentCartBinding? = null
     private lateinit var recycler: RecyclerView
 
+    //Variables para obtener información de CardFragment
     var price1 = 0.0f
     var price2 = 0.0f
     var quantity1 = 0
@@ -29,9 +31,8 @@ class CartFragment : Fragment(R.layout.fragment_cart), RecyclerAdapter.OnItemCli
     var message = ""
     val datos = Data()
 
+    //Aquí se declara fragment de "colocar el pedido"
     val fragmentP = MakePurchaseFragment()
-
-    //val pref = activity?.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,6 +43,7 @@ class CartFragment : Fragment(R.layout.fragment_cart), RecyclerAdapter.OnItemCli
         recycler = binding.cartView
         total = binding.total
 
+        //Se obtiene la información de la selección de productos
         price1 = arguments?.getFloat("PRICE_D") ?: 0.0f
         quantity1 = arguments?.getInt("QUANTITY1") ?: 0
         price2 = arguments?.getFloat("PRICE_C") ?: 0.0f
@@ -49,14 +51,13 @@ class CartFragment : Fragment(R.layout.fragment_cart), RecyclerAdapter.OnItemCli
 
         var aux = 0
 
-
+        //Lógica de manejo de contenido del carrito
         if (price1 != 0.0f) {
             if (price2 == 0.0f) aux = 1
         }
         if (price2 != 0.0f) {
             if (price1 == 0.0f) aux = 2
         }
-
 
         when (aux) {
             1 -> recycler.adapter = RecyclerAdapter(listOf(
@@ -70,15 +71,18 @@ class CartFragment : Fragment(R.layout.fragment_cart), RecyclerAdapter.OnItemCli
             ), this)
         }
 
+        //Mensaje final del total de la compra
         message = getString(R.string.Amount_to_pay) + "${(price1 + price2) * datos.iva}"
         binding.total.text = message
 
+        //Aquí nos vamos al fragment de "colocar pedido"
         binding.button.setOnClickListener {
             changeFragment()
         }
 
     }
 
+    //Lógica para eliminar elementos del carrito
     override fun onItemClick(position: Int) {
 
         //Toast.makeText(this, "${position}", Toast.LENGTH_SHORT).show()
@@ -109,6 +113,7 @@ class CartFragment : Fragment(R.layout.fragment_cart), RecyclerAdapter.OnItemCli
         }
     }
 
+    //Lógica para cambiar de fragment
     private fun changeFragment() {
         val fragmentTransaction = fragmentManager?.beginTransaction()
         fragmentTransaction?.replace(R.id.fragmentContainerView, fragmentP)
