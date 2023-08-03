@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16dp"
-        android:text="Buy Cart"
+        android:text="@string/buy_cart"
         android:layout_marginTop="35dp"
         android:layout_marginLeft="135dp"
         app:layout_constraintStart_toStartOf="parent"

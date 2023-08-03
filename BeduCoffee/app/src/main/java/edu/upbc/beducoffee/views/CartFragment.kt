@@ -52,28 +52,6 @@ class CartFragment : Fragment(R.layout.fragment_cart), RecyclerAdapter.OnItemCli
         price2 = arguments?.getFloat("PRICE_C") ?: 0.0f
         quantity2 = arguments?.getInt("QUANTITY2") ?: 0
 
-    /*    var aux = 0
-
-        //Lógica de manejo de contenido del carrito
-        if (price1 != 0.0f) {
-            if (price2 == 0.0f) aux = 1
-        }
-        if (price2 != 0.0f) {
-            if (price1 == 0.0f) aux = 2
-        }
-
-        when (aux) {
-            1 -> recycler.adapter = RecyclerAdapter(listOf(
-                CartItem(R.drawable.donas, "Donuts", quantity1, price1 )
-            ), this)
-            2 -> recycler.adapter = RecyclerAdapter(listOf(
-                CartItem(R.drawable.cafe, "Coffee", quantity2, price2 )), this)
-            else -> recycler.adapter = RecyclerAdapter(listOf(
-                CartItem(R.drawable.donas, "Donuts",quantity1, price1 ),
-                CartItem(R.drawable.cafe, "Coffee", quantity2, price2 )
-            ), this)
-        }*/
-
         setCart()
         setUpRecyclerView(items)
 
@@ -101,10 +79,10 @@ class CartFragment : Fragment(R.layout.fragment_cart), RecyclerAdapter.OnItemCli
         else aux = 0
 
         when (aux) {
-            1 -> items = mutableListOf(CartItem(R.drawable.donas, "Donuts", quantity1, price1))
-            2 -> items = mutableListOf(CartItem(R.drawable.cafe, "Coffee", quantity2, price2))
-            else -> items = mutableListOf(CartItem(R.drawable.donas, "Donuts", quantity1, price1),
-                CartItem(R.drawable.cafe, "Coffee", quantity2, price2))
+            1 -> items = mutableListOf(CartItem(R.drawable.donas, getString(R.string.donuts), quantity1, price1))
+            2 -> items = mutableListOf(CartItem(R.drawable.cafe, getString(R.string.coffee), quantity2, price2))
+            else -> items = mutableListOf(CartItem(R.drawable.donas, getString(R.string.donuts), quantity1, price1),
+                CartItem(R.drawable.cafe, getString(R.string.coffee), quantity2, price2))
         }
     }
 

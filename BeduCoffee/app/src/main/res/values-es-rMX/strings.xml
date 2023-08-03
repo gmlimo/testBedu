@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">Café BEDU</string>
+
+    <string name="username">Usuario</string>
+    <string name="sign_up">Registro</string>
+    <string name="login">Ingresar</string>
+    <string name="password">Contraseña</string>
+    <string name="last_name">Apellido</string>
+    <string name="sign_in">Ingresar</string>
+    <string name="given_name">Nombre(s)</string>
+    <string name="email">Correo Electrónico</string>
+    <string name="donuts">Donas</string>
+    <string name="coffee">Café</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="Amount_to_pay">Cantidad a pagar $</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Siguiente</string>
+    <string name="previous">Anterior</string>
+    <string name="select_size">Selecciona Tamaño</string>
+    <string name="not_empty">Este campo no debe estar vacío</string>
+    <string name="success">Ingreso exitoso</string>
+    <string name="fail">Usuario y contraseña no coinciden</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Productos</string>
+    <string name="profile">Pérfil</string>
+    <string name="cart">Carrito</string>
+    <string name="upperLimit">La cantidad no debe ser mayor a 50</string>
+    <string name="lowerLimit">La cantidad no puede ser menor a 0</string>
+    <string name="small">Pequeño</string>
+    <string name="medium">Mediano</string>
+    <string name="jumbo">Grande</string>
+    <string name="no_selection">No hay selección</string>
+    <string name="Select_again">Intenta de nuevo con la selección</string>
+    <string name="size_not_selected">Tamaño no ha sido seleccionado</string>
+    <string name="remove_item">¿Deseas quitar del carrito?</string>
+    <string name="delete">Borrar</string>
+    <string name="payment_options">Opciones de pago</string>
+    <string name="cash">Efectivo</string>
+    <string name="credit_or_debit_card">Tarjeta de Crédtio o Débito</string>
+    <string name="submit_order">Mandar Orden</string>
+    <string name="channel_general">Generales</string>
+    <string name="general_description">Notificaciones generales</string>
+    <string name="channel_others">Diversos</string>
+    <string name="others_description">Notificaciones diversas</string>
+    <string name="simple_title">Orden enviada</string>
+    <string name="simple_body">"¡Tu orden ha sido enviada a la tienda, la tendremos lista cuando llegues!"</string>
+    <string name="action_login_title">Bienvenido a Café Bedu</string>
+    <string name="action_body">A partir de ahora puedes acceder a la mejor tienda de donas y café. Con un solo click, logeate a nuestra tienda virtual</string>
+    <string name="version">Version 1.0</string>
+    <string name="downloading">Descargando…</string>
+    <string name="title_file_download">La APK se esta descargando</string>
+    <string name="storage_access_required">Permiso de almacenamiento es requerido para hacer la descarga.</string>
+    <string name="storage_permission_denied">Permiso de descarga negado.</string>
+    <string name="ok">OK</string>
+    <string name="new_version">Nueva versión</string>
+    <string name="new_version_msg">Recomendamos installar una nueva actualización</string>
+    <string name="btn_update">Actualizar</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="your_current_position_is">Tu posición actual es: </string>
+    <string name="this_is_the_store_nearest_to_you">Esta es la tienda más cercana:</string>
+    <string name="buy_cart">Comprar carrito</string>
+    <string name="gps_is_off">GPS esta apagado</string>
+    <string name="please_write_a_valid_email">Por favor proporciona un correo electrónico válido y una contraseña</string>
+</resources>

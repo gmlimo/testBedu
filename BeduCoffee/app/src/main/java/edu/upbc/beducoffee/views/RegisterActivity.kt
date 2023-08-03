@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import edu.upbc.beducoffee.R
@@ -43,31 +44,28 @@ class RegisterActivity : AppCompatActivity() {
         loginActivity = LoginActivity()
 
         with (binding) {
+
+            signInText.setOnClickListener {
+                changeActivity(loginActivity)
+            }
             //Si se presiona el botón de registro se guardan los datos
             registerButton.setOnClickListener {
 
-                val user = emailText.getText().toString()
-                val pass = regPass.getText().toString()
 
-                createAccount()
-
-                if (register(user, pass)) {
-                    preferences.edit()
-                        .putString(USER_KEY, user)
-                        .putString(PASS_KEY, pass)
-                        .apply()
+                if (createAccount()) {
 
                     //Notificación local de bienvenida
                     executeOrRequestPermission(this@RegisterActivity) {
                         touchNotification(this@RegisterActivity)
-                    }
 
                     changeActivity(loginActivity)
 
                 }
-                else {
-                    Toast.makeText(this@RegisterActivity, getString(R.string.not_empty), Toast.LENGTH_SHORT).show()
                 }
+                else {
+                    showMessage(getString(R.string.please_write_a_valid_email))
+                }
+
             }
         }
     }
@@ -88,19 +86,41 @@ class RegisterActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun createAccount() {
+    private fun createAccount(): Boolean {
         val user = binding.emailText.getText().toString()
         val pass = binding.regPass.getText().toString()
+        var validUser = false
+
+        if (register(user, pass)){
         auth.createUserWithEmailAndPassword(user, pass)
             .addOnCompleteListener(this){ task ->
                 if (task.isSuccessful){
                     Log.d(TAG, "createAccount: success")
                     val user = auth.currentUser
-                    //updateUI(user, null)
+                    updateUI(user, null)
+                    validUser = true
                 } else {
                     Log.w(TAG, "createAccount: failure", task.exception)
-                    //updateUI(null, task.exception)
+                    task.exception?.let { updateUI(null, it) }
                 }
             }
+        }
+        else {
+            validUser = false
+        }
+        return validUser
+    }
+
+    fun showMessage(messsage: String) {
+        Toast.makeText(this@RegisterActivity, messsage, Toast.LENGTH_SHORT).show()
+    }
+
+    fun updateUI(user: FirebaseUser?, exception: Exception?) {
+        if (exception != null) {
+            showMessage(exception.message.toString())
+        } else {
+            showMessage(user.toString() + " " + getString(R.string.success))
+        }
+
     }
 }

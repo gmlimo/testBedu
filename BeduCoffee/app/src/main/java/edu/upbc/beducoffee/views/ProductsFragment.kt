@@ -19,7 +19,7 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
 
     private var fragmentBlankBinding: FragmentProductsBinding? = null
 
-    //val pref = activity?.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+    val pref = activity?.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
     //Product classes initialization
     val donas = Donut("Chocolate")
@@ -120,8 +120,7 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
                         val price = preferences.getFloat(DONUT_KEY, 0.0f)
                         priceD = donas.subTotal(quantity1, size_Selection1, price)
 
-                        //val shared: SharedPreferences? =
-                        //activity?.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+                        pref?.getInt("QUANTITY1", quantity1)?.let { args.putInt("QUANTITY", it) }
                         args.putInt("QUANTITY1", quantity1)
                         args.putFloat("PRICE_D", priceD)
                         cartFragment.arguments = args
@@ -156,6 +155,7 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
                         val price = preferences.getFloat(COFFEE_KEY, 0.0f)
                         priceC = coffee.subTotal(quantity2, size_Selection2, price)
 
+                        pref?.getInt("QUANTITY2", quantity2)?.let { args.putInt("QUANTITY", it) }
                         args.putInt("QUANTITY2", quantity2)
                         args.putFloat("PRICE_C", priceC)
                         cartFragment.arguments = args

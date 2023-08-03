@@ -173,8 +173,8 @@ class ProductSelActivity : AppCompatActivity() {
         if (checkPermissions()) {
             if (isLocationEnabled()) {
                 fusedLocationClient.lastLocation.addOnSuccessListener { location ->
-                    val latitude = location.latitude.toFloat()
-                    val longitud = location.longitude.toFloat()
+                    val latitude = location.latitude?.toFloat() ?: 0.0f
+                    val longitud = location.longitude?.toFloat() ?: 0.0f
 
                     preferences.edit()
                         .putFloat(LATITUDE_KEY, latitude)
@@ -183,8 +183,7 @@ class ProductSelActivity : AppCompatActivity() {
                 }
             }
             else {
-                //Aquí va el reto 1 ver solucion se hace con un intent
-                Toast.makeText(this, "GPS is off", Toast.LENGTH_SHORT).show()}
+                Toast.makeText(this, getString(R.string.gps_is_off), Toast.LENGTH_SHORT).show()}
         }
         else {
             requestPermissions()

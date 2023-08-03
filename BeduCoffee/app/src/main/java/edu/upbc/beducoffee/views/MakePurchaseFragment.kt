@@ -31,6 +31,12 @@ class MakePurchaseFragment : Fragment(R.layout.fragment_make_purchase) {
         val latitude = preferences.getFloat(LATITUDE_KEY, 0.0f)
         val longitud = preferences.getFloat(LONGITUD_KEY, 0.0f)
 
+        binding.radioCash.setOnCheckedChangeListener { buttonView, isChecked ->
+            binding.radioCard.isChecked = false }
+
+        binding.radioCard.setOnCheckedChangeListener { buttonView, isChecked ->
+            binding.radioCash.isChecked = false}
+
         //Se despliega la información del gps
         binding.position.text = "Your current position is: ${latitude} , ${longitud}"
 
