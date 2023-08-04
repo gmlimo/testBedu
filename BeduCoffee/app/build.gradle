@@ -8,7 +8,7 @@ plugins {
 android {
     signingConfigs {
         debug {
-            storeFile file('D:\\UPBC\\AndroidProjects\\Keys\\KeyAgain.jks')
+            storeFile file('D:\\UPBC\\AndroidProjects\\Keys\\KeyAgain.keystore')
             storePassword 'limg0703'
             keyAlias 'key2'
             keyPassword 'limg0703'
@@ -22,13 +22,16 @@ android {
         minSdk 28
         targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName "3.5"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'BASE_URL', "\"https://swapi.dev/api/\""
     }
 
     buildFeatures {
         viewBinding true
+        buildConfig = true
     }
 
     buildTypes {

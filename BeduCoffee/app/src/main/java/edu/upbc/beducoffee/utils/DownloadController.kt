@@ -10,7 +10,7 @@ import android.os.Build
 import android.os.Environment
 import android.widget.Toast
 import androidx.core.content.FileProvider
-import com.google.android.datatransport.BuildConfig
+import edu.upbc.beducoffee.BuildConfig
 import edu.upbc.beducoffee.R
 import java.io.File
 

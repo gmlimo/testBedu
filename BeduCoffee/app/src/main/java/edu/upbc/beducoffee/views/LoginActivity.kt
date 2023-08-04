@@ -3,18 +3,13 @@ package edu.upbc.beducoffee.views
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.app.Activity
 import android.app.ActivityOptions
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.TransitionInflater
 import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -22,19 +17,11 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import edu.upbc.beducoffee.R
 import edu.upbc.beducoffee.databinding.ActivityLoginBinding
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.GoogleAuthProvider
 import edu.upbc.beducoffee.utils.DownloadController
-import edu.upbc.beducoffee.utils.buildAlertDialog
 import edu.upbc.beducoffee.utils.checkSelfPermissionCompat
 import edu.upbc.beducoffee.utils.requestPermissionsCompat
 import edu.upbc.beducoffee.utils.shouldShowRequestPermissionRationaleCompat
-import java.io.BufferedReader
-import java.io.InputStream
-import java.io.InputStreamReader
-import java.net.HttpURLConnection
-import java.net.URL
+
 
 lateinit var auth: FirebaseAuth
 
@@ -61,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
         productSelAct = ProductSelActivity()
 
         downloadController = DownloadController(this, urlApp)
-        checkUpdate()
+       // checkUpdate()
 
         with (binding) {
 
@@ -178,74 +165,11 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkUpdate(){
-        Thread {
-            val remoteVersionCode = readUrlFile(urlCode)
-            if (remoteVersionCode !== null) {
-                val localVersionCode: Int = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                    packageManager.getPackageInfo(packageName, 0).longVersionCode.toInt()
-                } else {
-                    packageManager.getPackageInfo(packageName, 0).versionCode
-                }
-
-                Log.e("TAG", "onCreate: $remoteVersionCode, $localVersionCode")
-                runOnUiThread {
-                    if (remoteVersionCode.toInt() > localVersionCode) {
-                        val alertDialog: AlertDialog = buildAlertDialog(
-                            this,
-                            R.string.new_version,
-                            R.string.new_version_msg
-                        )
-                        alertDialog.setButton(
-                            DialogInterface.BUTTON_POSITIVE, getString(R.string.btn_update)
-                        ) { dialog: DialogInterface, _: Int ->
-                            dialog.dismiss()
-                            checkStoragePermission()
-                        }
-                        alertDialog.setButton(
-                            DialogInterface.BUTTON_NEGATIVE, getString(R.string.btn_cancel)
-                        ) { dialog: DialogInterface, _: Int ->
-                            dialog.dismiss()
-                        }
-                        alertDialog.show()
-                    }
-                }
-            } else {
-                Log.e("TAG", "onCreate: error checking version")
-            }
-        }.start()
-    }
-
-    private fun readUrlFile(url: String): String? {
-        var data: String? = null
-        var iStream: InputStream? = null
-        var urlConnection: HttpURLConnection? = null
-        try {
-            urlConnection = URL(url).openConnection() as HttpURLConnection?
-            urlConnection?.connect()
-            iStream = urlConnection?.inputStream
-            val br = BufferedReader(InputStreamReader(iStream))
-            val sb = StringBuilder()
-            var line: String?
-            while (br.readLine().also { line = it } != null) {
-                sb.append(line)
-            }
-            data = sb.toString()
-            br.close()
-        } catch (e: Exception) {
-            Log.w("", "Exception while downloading url: $e")
-        } finally {
-            iStream?.close()
-            urlConnection?.disconnect()
-        }
-        return data
-    }
-
 
     companion object {
         private const val TAG = "FirebaseActivity"
         const val PERMISSION_REQUEST_STORAGE = 0
         const val urlApp = "https://github.com/gmlimo/testBedu/raw/apk/bedu_coffee2-release.apk"
-        const val urlCode = "https://github.com/gmlimo/testBedu/raw/apk/versionCode.txt"
+        //const val urlCode = "https://github.com/gmlimo/testBedu/raw/apk/versionCode.txt"
     }
 }

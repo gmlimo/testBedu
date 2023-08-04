@@ -50,7 +50,7 @@
     <string name="simple_body">"Your order has been succefull sent to store, we´ll have it ready when you arrive!!"</string>
     <string name="action_login_title">Welcome to BEDU Coffee</string>
     <string name="action_body">Now you have access to best shop of coffee and donuts. With just a click login to our virtual shop</string>
-    <string name="version">Version 1.0</string>
+    <string name="version">Version 3.5</string>
     <string name="downloading">Downloading…</string>
     <string name="title_file_download">APK is downloading</string>
     <string name="storage_access_required">Storage access is required to downloading the file.</string>
@@ -60,7 +60,7 @@
     <string name="new_version_msg">We recommend installing the update</string>
     <string name="btn_update">Update</string>
     <string name="btn_cancel">Cancel</string>
-    <string name="your_current_position_is">"Your current position is: "</string>
+    <string name="your_current_position_is">Your current position is: </string>
     <string name="this_is_the_store_nearest_to_you">This is the store nearest to you</string>
     <string name="buy_cart">Buy Cart</string>
     <string name="gps_is_off">GPS is off</string>

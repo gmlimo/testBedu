@@ -22,6 +22,7 @@ val PREFS_NAME = "edu.upbc.cafebedu"
 val USER_KEY = "USER_KEY"
 val PASS_KEY = "PASS_KEY"
 lateinit var preferences: SharedPreferences
+var validUser = false
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -36,7 +37,6 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         FirebaseApp.initializeApp(this)
-
         auth = Firebase.auth
 
         //Aquí se inicializan Shared Preferences y la actividad de acceso
@@ -51,9 +51,7 @@ class RegisterActivity : AppCompatActivity() {
             //Si se presiona el botón de registro se guardan los datos
             registerButton.setOnClickListener {
 
-
                 if (createAccount()) {
-
                     //Notificación local de bienvenida
                     executeOrRequestPermission(this@RegisterActivity) {
                         touchNotification(this@RegisterActivity)
@@ -89,16 +87,16 @@ class RegisterActivity : AppCompatActivity() {
     private fun createAccount(): Boolean {
         val user = binding.emailText.getText().toString()
         val pass = binding.regPass.getText().toString()
-        var validUser = false
+
 
         if (register(user, pass)){
+            validUser = true
         auth.createUserWithEmailAndPassword(user, pass)
             .addOnCompleteListener(this){ task ->
                 if (task.isSuccessful){
                     Log.d(TAG, "createAccount: success")
                     val user = auth.currentUser
                     updateUI(user, null)
-                    validUser = true
                 } else {
                     Log.w(TAG, "createAccount: failure", task.exception)
                     task.exception?.let { updateUI(null, it) }
