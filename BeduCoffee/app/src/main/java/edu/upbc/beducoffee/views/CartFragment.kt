@@ -100,20 +100,38 @@ class CartFragment : Fragment(R.layout.fragment_cart), RecyclerAdapter.OnItemCli
     override fun onItemClick(position: Int) {
         //Toast.makeText(this, "${position}", Toast.LENGTH_SHORT).show()
         if (position == 0) {
-            Snackbar.make(total, "¿Quieres remover el elemento?", Snackbar.LENGTH_LONG).setAction("Eliminar") {
+            Snackbar.make(total, getString(R.string.remove_item), Snackbar.LENGTH_LONG).setAction(getString(
+                            R.string.remove)) {
                 items.removeAt(position)
                 mAdapater.notifyItemRemoved(position)
                 setUpRecyclerView(items)
+                if (items.size != 0) {
+                    message = getString(R.string.Amount_to_pay) + "${price2 * 1.08f}"
+                    total.text = message
+                }
+                else {
+                    message = getString(R.string.Amount_to_pay) + "0.0"
+                    total.text = message
+                }
             }
                 .setBackgroundTint(getColor(requireContext(), R.color.colorPrimary))
                 .setActionTextColor(getColor(requireContext(), R.color.white))
                 .show()
         }
         if (position == 1) {
-            Snackbar.make(total, "¿Quieres remover el elemento?", Snackbar.LENGTH_LONG).setAction("Eliminar") {
+            Snackbar.make(total, getString(R.string.remove_item), Snackbar.LENGTH_LONG).setAction(getString(
+                R.string.remove)) {
                 items.removeAt(position)
                 mAdapater.notifyItemRemoved(position)
                 setUpRecyclerView(items)
+                if (items.size != 0) {
+                    message = getString(R.string.Amount_to_pay) + "${price1 * 1.08f}"
+                    total.text = message
+                }
+                else {
+                    message = getString(R.string.Amount_to_pay) + "0.0"
+                    total.text = message
+                }
             }
                 .setBackgroundTint(getColor(requireContext(), R.color.colorPrimary))
                 .setActionTextColor(getColor(requireContext(), R.color.white))

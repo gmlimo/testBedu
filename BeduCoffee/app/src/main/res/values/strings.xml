@@ -50,7 +50,7 @@
     <string name="simple_body">"Your order has been succefull sent to store, we´ll have it ready when you arrive!!"</string>
     <string name="action_login_title">Welcome to BEDU Coffee</string>
     <string name="action_body">Now you have access to best shop of coffee and donuts. With just a click login to our virtual shop</string>
-    <string name="version">Version 3.5</string>
+    <string name="version">Version 3.5.1</string>
     <string name="downloading">Downloading…</string>
     <string name="title_file_download">APK is downloading</string>
     <string name="storage_access_required">Storage access is required to downloading the file.</string>
@@ -65,4 +65,5 @@
     <string name="buy_cart">Buy Cart</string>
     <string name="gps_is_off">GPS is off</string>
     <string name="please_write_a_valid_email">Please write a valid email and password</string>
+    <string name="remove">Remove</string>
 </resources>

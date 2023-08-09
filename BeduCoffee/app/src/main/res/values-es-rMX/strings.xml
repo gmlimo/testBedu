@@ -50,7 +50,7 @@
     <string name="simple_body">"¡Tu orden ha sido enviada a la tienda, la tendremos lista cuando llegues!"</string>
     <string name="action_login_title">Bienvenido a Café Bedu</string>
     <string name="action_body">A partir de ahora puedes acceder a la mejor tienda de donas y café. Con un solo click, logeate a nuestra tienda virtual</string>
-    <string name="version">Version 3.5</string>
+    <string name="version">Version 3.5.1</string>
     <string name="downloading">Descargando…</string>
     <string name="title_file_download">La APK se esta descargando</string>
     <string name="storage_access_required">Permiso de almacenamiento es requerido para hacer la descarga.</string>
@@ -65,4 +65,5 @@
     <string name="buy_cart">Comprar carrito</string>
     <string name="gps_is_off">GPS esta apagado</string>
     <string name="please_write_a_valid_email">Por favor proporciona un correo electrónico válido y una contraseña</string>
+    <string name="remove">Remove</string>
 </resources>
